@@ -158,8 +158,6 @@ SIMPLE_JWT = {
 
 }
 
-# CRONTAB_COMMAND_SUFFIX = '2>&1'
-
 CRONJOBS = [
     ('0 0 * * *', 'rating.cron.notify_admins',  '>> {}/file.log'.format(BASE_DIR))
 ]

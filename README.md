@@ -46,3 +46,38 @@
     ```commandline
     python3 manage.py makemigrations
     python3 manage.py migrate
+
+## ASSUMPTIONS
+
+The DB Structure:
+1. User Table:
+    - id
+    - first_name
+    - last_name
+    - email
+    - password
+
+1. Movie Table:
+    - id
+    - name
+    - created_by (User)
+
+1. Ratings Table:
+    - id
+    - rating {1,5}
+    - user (User)
+    - movie (Movie)
+    
+DB Fixture used for test cases:
+1. User Table:
+    - {first_name='jon', last_name='doe', 
+    email='jon@doe.com',password='jon@doe.com'}
+    - {first_name='abc', last_name='xyz', 
+    email='abc@xyz.com',password='abc@xyz.com'}
+
+1. Movie Table:
+    - {id='1', name='Titanic', created_by='abc@xyz.com'}
+
+User is allowed to add movies with same name.
+
+Cron Job contains dummy Email Ids for admins and sender. It can be found at the end of ```settings.py``` 
