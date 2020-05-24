@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from rating.models import User, Movie, Rating
+from rating.models import Movie, Rating
 
 
 class MovieSerializer(serializers.ModelSerializer):
