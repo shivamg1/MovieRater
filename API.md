@@ -39,7 +39,7 @@
    - name : String
    
    Returns:
-   - Success - Movie is added
+   - Details of the Movie added 
    
    GET<br>
    Returns a list of all movies with movieId, name, and created by.

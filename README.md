@@ -1,27 +1,48 @@
 # MovieRater
 
+## Running the application: 
 - Setup virtual environment<br>
-    ```virtualenv -p /usr/local/bin/python3 venv```
+    ```commandline
+    virtualenv -p /usr/local/bin/python3 venv
 - Activate virtual environment <br>
-    ```souce venv/bin/activate```
+    ```commandline
+    souce venv/bin/activate
 - Install all the requirements <br>
-    ```pip install -r requirements.txt```
+    ```commandline
+    pip install -r requirements.txt
+- __Setup Database__
+
 - Run the application <br>
-    ```python3 manage.py runserver```
+    ```commandline
+    python3 manage.py runserver
+    
+- To run the test cases <br>
+    ```commandline
+    python3 manage.py test rating.tests
+
+- To add the Cron Job <br>
+    ```commandline
+    python3 manage.py crontab add
 
 ### DB SETUP
 
 - Install Postgres <br>
 - Start postgres <br>
-    ```brew services start postgres```
+    ```commandline
+    brew services start postgres
 - Enter postgres Console <br>
-    ```psql postgres```
+    ```commandline
+    psql postgres
 - Create Database <br>
-    ```CREATE DATABASE movierater;```
+    ```commandline
+    CREATE DATABASE movierater;
 - Create a new Role <br> 
-    ```CREATE ROLE newuser WITH LOGIN PASSWORD 'password';```
+    ```commandline
+    CREATE ROLE newuser WITH LOGIN PASSWORD 'password';
 - Grant the privileges to the created role <br>
-    ```GRANT ALL PRIVILEGES ON DATABASE movierater TO newuser;```
+    ```commandline
+    GRANT ALL PRIVILEGES ON DATABASE movierater TO newuser;
 - Make and run migrations on the Database. <br>
-    ```python3 manage.py makemigrations``` <br>
-    ```python3 manage.py migrate```
+    ```commandline
+    python3 manage.py makemigrations
+    python3 manage.py migrate
