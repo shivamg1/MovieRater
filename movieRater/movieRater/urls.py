@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from rating.views import Signup, Login, MovieOperations, RatingOperations
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('signup', Signup.as_view()),
+    path('signin', Login.as_view()),
+    path('movie', MovieOperations.as_view()),
+    path('rate', RatingOperations.as_view())
 ]
