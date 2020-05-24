@@ -56,7 +56,8 @@ class MovieOperations(GenericAPIView):
         try:
             movie = Movie(name=name, created_by=request.user)
             movie.save()
-            return Response("Movie added successfully", 200)
+            serializer = MovieSerializer(movie)
+            return Response(serializer.data, 200)
         except Exception as err:
             return Response("Following error occured while adding movie: {}".format(str(err)), 400)
 
