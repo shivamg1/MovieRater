@@ -21,3 +21,8 @@ class RatingSerializer(serializers.ModelSerializer):
         model = Rating
         fields = '__all__'
 
+
+class MailSerializer(serializers.Serializer):
+    movie_id = serializers.CharField()
+    movie_name = serializers.CharField()
+    average_rating = serializers.DecimalField(max_digits=3, decimal_places=2)

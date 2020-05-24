@@ -14,7 +14,7 @@ admin.site.register(User, UserAdmin)
 
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ("rating",)
+    list_display = ("rating", "movie", "user")
 
     class Meta:
         models = Rating

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rating'
+    'rating',
+    'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -157,3 +158,21 @@ SIMPLE_JWT = {
 
 }
 
+# CRONTAB_COMMAND_SUFFIX = '2>&1'
+
+CRONJOBS = [
+    ('0 0 * * *', 'rating.cron.notify_admins',  '>> {}/file.log'.format(BASE_DIR))
+]
+
+ADMINS = [
+    ('John', 'john@doe.com'),
+    ('Mary', 'mary@jane.com')
+]
+
+# Email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sample_user@gmail.com'
+EMAIL_HOST_PASSWORD = 'my_account_password'

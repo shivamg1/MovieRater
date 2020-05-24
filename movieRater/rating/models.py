@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import EmailValidator, validate_email
 from django.db import models
 from django.db.models import CASCADE, SET_NULL
 
@@ -10,8 +11,7 @@ class UserManager(BaseUserManager):
         """
         Creates and saves a User with the given email and password.
         """
-        if not email:
-            raise ValueError('Email must be set')
+        validate_email(email)
         user = self.model(email=email, username=email, **extra_fields)
         user.set_password(password)
         user.save()
@@ -32,7 +32,7 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, validators=[EmailValidator])
     username = models.CharField(max_length=150)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

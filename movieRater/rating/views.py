@@ -5,12 +5,11 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from rating.models import User, Movie, Rating
+from rating.models import User, Movie
 from rating.serializer import MovieSerializer, RatingSerializer
 
 
 class Signup(GenericAPIView):
-
     permission_classes = (AllowAny,)
 
     def post(self, request):
@@ -29,7 +28,6 @@ class Signup(GenericAPIView):
 
 
 class Login(GenericAPIView):
-
     permission_classes = (AllowAny,)
 
     def post(self, request):
@@ -76,7 +74,7 @@ class RatingOperations(GenericAPIView):
         if not rating or not movie_id:
             return Response("Required params not provided", 400)
         try:
-            # movie = Movie.objects.get(~Q(created_by_id=request.user.id), id=movie_id)
+            Movie.objects.get(~Q(created_by_id=request.user.id), id=movie_id)
             ser_data = dict()
             ser_data['user'] = request.user.id
             ser_data['movie'] = int(movie_id)
